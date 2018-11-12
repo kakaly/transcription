@@ -1,0 +1,13 @@
+gcloud commands:
+=> if login fails
+./google-cloud-sdk/bin/gcloud auth application-default login 
+
+npm commands:
+=> To start:
+DEBUG=transcription:* npm start
+
+curl -F 'file=@/Users/karthikkalyanaraman1/Desktop/simt.mp3' http://localhost:3000/post/localupload
+curl --request POST --data {"format":"flac","channel":"1","frequency":"16000"} http://localhost:3000/post/format
+curl http://localhost:3000/get/transcribe/
+
+gcloud ml speech recognize-long-running gs://karthik-040390/uploaded.flac  --language-code en-US --encoding FLAC --sample-rate 16000  > my_transcription.json
