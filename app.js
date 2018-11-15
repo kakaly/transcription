@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var cors = require('cors');
 var transcript = require('./routes/transcript');
+var router = transcript.router;
+var cloudupload = transcript.cloudupload;
 
 var app = express();
 
@@ -26,8 +28,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Use the defined routes
-app.use('/post', transcript);
-app.use('/get', transcript);
+app.use('/post', router);
+app.use('/get', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
